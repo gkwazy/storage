@@ -82,16 +82,13 @@ function SearchAppBar(props) {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-                        <MenuIcon />
-                    </IconButton>
                     <Typography className={classes.title} variant="title" color="inherit" noWrap>
                         Welcome to Stock and Track
           </Typography>
                     <div className={classes.grow} />
                     <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
+                     <div className={classes.searchIcon}>
+                    <SearchIcon />
                         </div>
                         <Input
                             placeholder="Search…"

@@ -24,37 +24,35 @@ const styles = theme => ({
     },
 });
 
-const currencies = [
-    {
-        value: 'USD',
-        label: '$',
-    },
-    {
-        value: 'EUR',
-        label: '€',
-    },
-    {
-        value: 'BTC',
-        label: '฿',
-    },
-    {
-        value: 'JPY',
-        label: '¥',
-    },
-];
 
 class FilledTextFields extends React.Component {
+
     state = {
-        name: 'Cat in the Hat',
-        age: '',
-        multiline: 'Controlled',
-        currency: 'EUR',
+        productNumber: '',
+        productName: '',
+        cost: '',
+        quantity: '',
+        supplier: '',
+        category: '',
+        minQuantity: '',
+        location: '',
+        description: ''
     };
 
     handleChange = name => event => {
+        console.log("name: " + name);
+        console.log("state1: " + JSON.stringify(this.state))
+        console.log("event: " + event.target.value)
         this.setState({
             [name]: event.target.value,
-        });
+
+        },
+            () => console.log("state1: " + JSON.stringify(this.state))
+        );
+    };
+
+    buttonClick = () => {
+        console.log("yo")
     };
 
     render() {
@@ -69,8 +67,10 @@ class FilledTextFields extends React.Component {
                     label="Product Number"
                     placeholder="#"
                     className={classes.textField}
+                    onChange={this.handleChange('productNumber')}
                     margin="normal"
                     variant="filled"
+
                 />
                 <TextField
                     required
@@ -80,6 +80,7 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
+                    onChange={this.handleChange('productName')}
                 />
                 <TextField
                     required
@@ -89,6 +90,7 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
+                    onChange={this.handleChange('cost')}
                 />
                 <TextField
                     required
@@ -98,6 +100,7 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
+                    onChange={this.handleChange('quantity')}
                 />
                 <TextField
                     id="Supplier"
@@ -106,13 +109,16 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                /><TextField
+                    onChange={this.handleChange('supplier')}
+                />
+                <TextField
                     id="Category"
                     label="Category"
                     placeholder="Name"
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
+                    onChange={this.handleChange('category')}
                 />
                 <TextField
                     id="MinQuantity"
@@ -121,17 +127,16 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
+                    onChange={this.handleChange('minQuantity')}
                 /><TextField
                     id="Location"
                     label="Location"
                     placeholder="#"
-
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
+                    onChange={this.handleChange('location')}
                 />
-
-
                 <TextField
                     required
                     id="Description"
@@ -143,11 +148,15 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
+                    onChange={this.handleChange('description')}
                 />
                 <UpLoad>
                     Load Picture
                 </UpLoad>
-                <Button>
+                <Button
+                    onClick={this.buttonClick}
+
+                >
                     Submit
                 </Button>
 
