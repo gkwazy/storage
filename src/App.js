@@ -1,37 +1,18 @@
-import React, { Component } from 'react';
-import './App.css';
-import AppBar from "./componets/AppBar"
-import Card from "./componets/Card"
-import TextFilled from "./componets/TextFilled"
-import TextField from "./componets/TextFilled";
-
-class App extends Component {
-  state = {
-    productNumber: '',
-    productName: '',
-    cost: '',
-    quantity: '',
-    supplier: '',
-    category: '',
-    minQuantity: '',
-    location: '',
-    description: ''
-
-  }
-
-
-
-  render() {
-    return (
-
-      <div className="App">
-        <AppBar>
-        </AppBar>
-        <Card>
-        </Card>
-      </div>
-    );
-  }
-}
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AppBar from "./components/AppBar"
+import formPage from "./pages/formPage";
+import mainPage from "./pages/mainPage"
+const App = () => (
+    <Router>
+        <div>
+            <AppBar />
+            <Switch>
+                <Route exact path="/" component={mainPage} />
+                <Route exact path="/formPage" component={formPage} />
+            </Switch>
+        </div>
+    </Router>
+);
 
 export default App;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
+import API from '../utils/API'
 import TextField from '@material-ui/core/TextField';
 import Button from "./Button";
 import UpLoad from "./upLoad"
@@ -52,7 +52,18 @@ class FilledTextFields extends React.Component {
     };
 
     buttonClick = () => {
-        console.log("yo")
+        console.log("starting to send items")
+        API.saveItem({
+            productNumber: this.state.productNumber,
+            productName: this.state.productName,
+            cost: this.state.cost,
+            quantity: this.state.quantity,
+            supplier: this.state.supplier,
+            category: this.state.category,
+            minQuantity: this.state.minQuantity,
+            location: this.state.location,
+            description: this.state.description
+        })
     };
 
     render() {

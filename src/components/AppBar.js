@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import red from '@material-ui/core/colors/red';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom'
+import SvgIcon from '@material-ui/core/SvgIcon'
+
 
 
 const styles = theme => ({
@@ -75,6 +74,14 @@ const styles = theme => ({
 
 });
 
+function HomeIcon(props) {
+    return (
+        <SvgIcon {...props}>
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </SvgIcon>
+    );
+}
+
 function SearchAppBar(props) {
 
     const { classes } = props;
@@ -85,10 +92,13 @@ function SearchAppBar(props) {
                     <Typography className={classes.title} variant="title" color="inherit" noWrap>
                         Welcome to Stock and Track
           </Typography>
+                    <Button size="small" color="white" component={Link} to="/">
+                        <HomeIcon className={classes.icon} />
+                    </Button>
                     <div className={classes.grow} />
                     <div className={classes.search}>
-                     <div className={classes.searchIcon}>
-                    <SearchIcon />
+                        <div className={classes.searchIcon}>
+                            <SearchIcon />
                         </div>
                         <Input
                             placeholder="Search…"
