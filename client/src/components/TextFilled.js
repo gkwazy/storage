@@ -36,7 +36,8 @@ class FilledTextFields extends React.Component {
         category: '',
         minQuantity: '',
         location: '',
-        description: ''
+        description: '',
+        picture: ''
     };
 
     handleChange = name => event => {
@@ -62,9 +63,20 @@ class FilledTextFields extends React.Component {
             category: this.state.category,
             minQuantity: this.state.minQuantity,
             location: this.state.location,
-            description: this.state.description
+            description: this.state.description,
+            picture: this.picture
         })
     };
+
+    fileSelectedHandler = event => {
+        console.log(event.target.files[0])
+        this.setState({
+            picture: event.target.files[0]
+
+        },
+            () => console.log("state3: " + JSON.stringify(this.state.picture))
+        );
+    }
 
     render() {
         const { classes } = this.props;
@@ -161,17 +173,20 @@ class FilledTextFields extends React.Component {
                     variant="filled"
                     onChange={this.handleChange('description')}
                 />
-                <UpLoad>
-                    Load Picture
-                </UpLoad>
+                <input
+                    style={{ display: 'none' }}
+                    type='file'
+                    onChange={this.fileSelectedHandler}
+                    ref={fileInput => this.fileInput = fileInput} />
+                <Button
+                    onClick={() => this.fileInput.click()}
+                    name='Up Load Image' />
                 <Button
                     onClick={this.buttonClick}
+                    name='Submit'
+                />
 
-                >
-                    Submit
-                </Button>
-
-            </form>
+            </form >
         );
     }
 }
