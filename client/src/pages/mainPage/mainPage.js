@@ -10,13 +10,10 @@ const MyComponent = () => (
             </Grid>
             <Grid item xs={12}>
             </Grid>
-            <Grid item xs={4}>
-            </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={24}>
                 <FrontPageCard />
             </Grid>
-            <Grid item xs={4}>
-            </Grid>
+
         </Grid>
 
     </div>
