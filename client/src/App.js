@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppBar from "./components/AppBar"
 import formPage from "./pages/formPage";
 import mainPage from "./pages/mainPage"
+import itemPage from "./pages/itemPage"
 const App = () => (
     <Router>
         <div>
@@ -10,6 +11,7 @@ const App = () => (
             <Switch>
                 <Route exact path="/" component={mainPage} />
                 <Route exact path="/formPage" component={formPage} />
+                <Route exact path="/itemPage" component={itemPage} />
             </Switch>
         </div>
     </Router>
