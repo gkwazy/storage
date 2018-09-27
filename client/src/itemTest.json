@@ -1,0 +1,54 @@
+[
+    {
+        "id": 0,
+        "productNumber": "88390",
+        "productName": "testing1",
+        "cost": "600",
+        "quantity": "50",
+        "supplier": "van by the river",
+        "category": "mystory",
+        "minQuantity": "0",
+        "location": "un my bed",
+        "description": "you really do not want to know really",
+        "picture": "../pic/van.jpg"
+    },
+    {
+        "id": 1,
+        "productNumber": "555",
+        "productName": "testing2",
+        "cost": "600",
+        "quantity": "50",
+        "supplier": "van by the river",
+        "category": "mystory",
+        "minQuantity": "0",
+        "location": "un my bed",
+        "description": "you really do not want to know really",
+        "picture": "../pic/van.jpg"
+    },
+    {
+        "id": 2,
+        "productNumber": "343",
+        "productName": "testing3",
+        "cost": "600",
+        "quantity": "50",
+        "supplier": "van by the river",
+        "category": "mystory",
+        "minQuantity": "0",
+        "location": "un my bed",
+        "description": "you really do not want to know really",
+        "picture": "../pic/van.jpg"
+    },
+    {
+        "id": 3,
+        "productNumber": "0",
+        "productName": "testing77",
+        "cost": "600",
+        "quantity": "50",
+        "supplier": "van by the river",
+        "category": "mystory",
+        "minQuantity": "0",
+        "location": "un my bed",
+        "description": "you really do not want to know really",
+        "picture": "../pic/van.jpg"
+    }
+]

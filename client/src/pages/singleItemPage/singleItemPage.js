@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import ItemCard from "../../components/itemCard"
+import SingleItemCard from "../../components/singleItemCard"
 import Grid from "@material-ui/core/Grid"
-// import item from "../../itemTest.json";
+import item from "../../itemTest.json";
 
 
 
-class ItemPage extends Component {
+class SingleItemPage extends Component {
 
     state = {
-        item: []
+        item
     };
 
     render() {
-        // console.log(this.state.item[0].productName)
+        console.log(this.state.item[0].productName)
         return (
             <div>
                 <Grid container spacing={16}>
                     <Grid item xs={12}>
                     </Grid>
-                    {this.state.item.map(item =>
-                        <Grid item s>
-                            <ItemCard
+                     <Grid item s justify='center'>
+                            <SingleItemCard
                                 productNumber={item.productNumber}
                                 productName={item.productName}
                                 cost={item.cost}
@@ -30,15 +29,15 @@ class ItemPage extends Component {
                                 minQuantity={item.minQuantity}
                                 location={item.location}
                                 description={item.description}
-                                picture={item.picture}
-                            />
-                        </Grid>
-                    )}
 
+                            />
+                            </Grid>
+                        )}
+                    
                 </Grid>
 
             </div>
         );
     }
 }
-export default ItemPage;
+export default SingleItemPage;
