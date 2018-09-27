@@ -24,19 +24,20 @@ const styles = theme => ({
     },
 });
 
-
+ 
 class FilledTextFields extends React.Component {
 
     state = {
-        productNumber: '',
-        productName: '',
-        cost: '',
-        quantity: '',
-        supplier: '',
-        category: '',
-        minQuantity: '',
+        PN: 'qwerty',
+        Name: '',
+        Cost: '1',
+        Quantity: '1',
+        Supplier: '',
+        Category: '',
+        MinQuantity: '',
         location: '',
-        description: ''
+        Description: 'first',
+        picture: ''
     };
 
     handleChange = name => event => {
@@ -51,20 +52,44 @@ class FilledTextFields extends React.Component {
         );
     };
 
+     addProduct = () => {
+        const { product } = this.state;
+        console.log("this is "+product)
+        // fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}`)
+        // // .then(this.getProducts)
+        // .catch(err => console.error(err))
+      }
+
     buttonClick = () => {
         console.log("starting to send items")
-        API.saveItem({
-            productNumber: this.state.productNumber,
-            productName: this.state.productName,
-            cost: this.state.cost,
-            quantity: this.state.quantity,
-            supplier: this.state.supplier,
-            category: this.state.category,
-            minQuantity: this.state.minQuantity,
-            location: this.state.location,
-            description: this.state.description
-        })
+        // API.saveItem({
+        //     PN: this.state.PN,
+        //     Name: this.state.Name,
+        //     Cost: this.state.Cost,
+        //     Quantity: this.state.Quantity,
+        //     Supplier: this.state.Supplier,
+        //     Category: this.state.Category,
+        //     MinQuantity: this.state.MinQuantity,
+        //     location: this.state.location,
+        //     Description: this.state.Description,
+        //     picture: this.picture
+        // })
+        const product  = this.state;
+        console.log("this is "+product.PN)
+        fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}`)
+        .then(this.getProducts)
+        .catch(err => console.error(err))
     };
+
+    fileSelectedHandler = event => {
+        console.log(event.target.files[0])
+        this.setState({
+            picture: event.target.files[0]
+
+        },
+            () => console.log("state3: " + JSON.stringify(this.state.picture))
+        );
+    }
 
     render() {
         const { classes } = this.props;
@@ -74,24 +99,24 @@ class FilledTextFields extends React.Component {
 
                 <TextField
                     required
-                    id="ProductNumber"
+                    id="PN"
                     label="Product Number"
                     placeholder="#"
                     className={classes.textField}
-                    onChange={this.handleChange('productNumber')}
+                    onChange={this.handleChange('PN')}
                     margin="normal"
                     variant="filled"
 
                 />
                 <TextField
                     required
-                    id="ProductName"
+                    id="Name"
                     label="Product Name"
                     placeholder="Name"
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                    onChange={this.handleChange('productName')}
+                    onChange={this.handleChange('Name')}
                 />
                 <TextField
                     required
@@ -101,7 +126,7 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                    onChange={this.handleChange('cost')}
+                    onChange={this.handleChange('Cost')}
                 />
                 <TextField
                     required
@@ -111,7 +136,7 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                    onChange={this.handleChange('quantity')}
+                    onChange={this.handleChange('Quantity')}
                 />
                 <TextField
                     id="Supplier"
@@ -120,7 +145,7 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                    onChange={this.handleChange('supplier')}
+                    onChange={this.handleChange('Supplier')}
                 />
                 <TextField
                     id="Category"
@@ -129,16 +154,16 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                    onChange={this.handleChange('category')}
+                    onChange={this.handleChange('Category')}
                 />
                 <TextField
                     id="MinQuantity"
-                    label="minQuantity"
+                    label="MinQuantity"
                     placeholder="#"
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                    onChange={this.handleChange('minQuantity')}
+                    onChange={this.handleChange('MinQuantity')}
                 /><TextField
                     id="Location"
                     label="Location"
@@ -159,19 +184,22 @@ class FilledTextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
-                    onChange={this.handleChange('description')}
+                    onChange={this.handleChange('Description')}
                 />
-                <UpLoad>
-                    Load Picture
-                </UpLoad>
+                <input
+                    style={{ display: 'none' }}
+                    type='file'
+                    onChange={this.fileSelectedHandler}
+                    ref={fileInput => this.fileInput = fileInput} />
+                <Button
+                    onClick={() => this.fileInput.click()}
+                    name='Up Load Image' />
                 <Button
                     onClick={this.buttonClick}
+                    name='Submit'
+                />
 
-                >
-                    Submit
-                </Button>
-
-            </form>
+            </form >
         );
     }
 }

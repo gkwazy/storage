@@ -21,32 +21,29 @@ const styles = {
 
 function MediaCard(props) {
     const { classes } = props;
+    console.log(props);
     return (
         <Card className={classes.card}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image="../pic/warehouse.jpg"
-                    title="storage area"
+                    image={props.picture}
+                    title={props.productName}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="headline" component="h2">
-                        Welcome
-          </Typography>
+                        {props.Number}
+                    </Typography>
                     <Typography component="p">
-                        To checkout a item or add to your stock please click the STORE HOUSE link
-                        or to add a new item and print a label click the ADD link below
-          </Typography>
+                        Location: {props.location}
+                    </Typography>
+                    <Typography component="p">
+                        Description:{props.description}
+                    </Typography>
+
                 </CardContent>
             </CardActionArea>
             <CardActions>
-
-                <Button size="small" color="white" component={Link} to="/itemPage">
-                    STORE HOUSE
-        </Button>
-                <Button size="small" color="white" component={Link} to="/formPage">
-                    ADD
-        </Button>
             </CardActions>
         </Card>
 

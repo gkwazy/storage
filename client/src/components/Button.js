@@ -17,7 +17,7 @@ function ContainedButtons(props) {
     return (
         <div>
             <Button variant="contained" color="primary" className={classes.button} {...props}>
-                Submit
+                {props.name}
             </Button>
         </div>
     );
