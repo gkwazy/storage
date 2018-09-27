@@ -78,7 +78,9 @@ class FilledTextFields extends React.Component {
         // })
         const product  = this.state;
         console.log("this is "+product.PN)
-        fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}`)
+        fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}&Lat=${product.Lat}&Lon=${product.Lon}
+        `)
         .then(this.getProducts)
         .catch(err => console.error(err))
     };
@@ -168,15 +170,6 @@ class FilledTextFields extends React.Component {
                     variant="filled"
                     onChange={this.handleChange('MinQuantity')}
                 /><TextField
-                    id="Location"
-                    label="Location"
-                    placeholder="#"
-                    className={classes.textField}
-                    margin="normal"
-                    variant="filled"
-                    onChange={this.handleChange('location')}
-                />
-                <TextField
                     required
                     id="Description"
                     label="Description"

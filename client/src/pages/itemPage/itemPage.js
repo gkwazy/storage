@@ -8,8 +8,24 @@ import Grid from "@material-ui/core/Grid"
 class ItemPage extends Component {
 
     state = {
-        item: []
+
+        products: []
+
     };
+
+    componentDidMount() {
+        this.getProducts()
+      
+      }
+    
+      getProducts = _ => {  fetch('http://localhost:4000/products')
+      .then(response => response.json())
+      .then(response => this.setState({ products: response.data }))
+      .then(console.log(this.state.products))
+      .catch(err => console.error(err))
+
+    
+    }
 
     render() {
         // console.log(this.state.item[0].productName)
@@ -18,19 +34,19 @@ class ItemPage extends Component {
                 <Grid container spacing={16}>
                     <Grid item xs={12}>
                     </Grid>
-                    {this.state.item.map(item =>
+                    {this.state.products.map(item =>
                     <Grid item s>
                             <ItemCard
-                                productNumber={item.productNumber}
-                                productName={item.productName}
-                                cost={item.cost}
-                                quantity={item.quantity}
-                                supplier={item.supplier}
-                                category={item.category}
+                                PN={item.PN}
+                                Name={item.Name}
+                                Cost={item.cost}
+                                Quantity={item.Quantity}
+                                Supplier={item.Supplier}
+                                Category={item.Category}
                                 minQuantity={item.minQuantity}
-                                location={item.location}
-                                description={item.description}
-                                picture={item.picture}
+                                lat={item.lat}
+                                lon={item.lon}
+                                Description={item.Description}
                             />
                             </Grid>
                         )}

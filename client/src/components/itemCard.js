@@ -28,17 +28,17 @@ function MediaCard(props) {
                 <CardMedia
                     className={classes.media}
                     image={props.picture}
-                    title={props.productName}
+                    title={props.PN}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="headline" component="h2">
                         {props.Number}
                     </Typography>
                     <Typography component="p">
-                        Location: {props.location}
+                        Quantity: {props.Quantity}
                     </Typography>
                     <Typography component="p">
-                        Description:{props.description}
+                        Description: {props.Description}
                     </Typography>
 
                 </CardContent>

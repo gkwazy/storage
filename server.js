@@ -35,8 +35,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/products/add', (req, res) => {
-    const {PN, Cost, Description, Quantity } = req.query;
-    const INSERT_PRODUCT_QUERY = `INSERT INTO products (PN, Cost, Description, Quantity) VALUES( '${PN}' , ${Cost} , '${Description}', ${Quantity})`
+    const {PN, Cost, Description, Quantity, MinQuantity, Supplier, Category } = req.query;
+    const INSERT_PRODUCT_QUERY = `INSERT INTO products (PN, Cost, Description, Quantity, MinQuantity, Supplier, Category) 
+    VALUES( '${PN}' , ${Cost} , '${Description}', ${Quantity}, ${MinQuantity} , '${Supplier}' , '${Category}')`
     connection.query(INSERT_PRODUCT_QUERY, (err, results) =>{
        
         if(err) {
@@ -45,7 +46,7 @@ app.get('/products/add', (req, res) => {
 
     })
 
-    console.log(PN, Cost, Description, Quantity)
+    console.log(PN, Cost, Description, Quantity, MinQuantity, Supplier, Category)
     
 
 })
