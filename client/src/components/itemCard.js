@@ -24,13 +24,12 @@ function MediaCard(props) {
     console.log(props);
     return (
         <Card className={classes.card}>
-            <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image={props.picture}
-                    title={props.productName}
-                />
+            <CardActionArea component={Link} to="/singleItemPage">
+
                 <CardContent>
+                    <Typography className={classes.title} color="textSecondary" variant="display3"            >
+                        {props.ProductName}
+                    </Typography>
                     <Typography gutterBottom variant="headline" component="h2">
                         {props.Number}
                     </Typography>

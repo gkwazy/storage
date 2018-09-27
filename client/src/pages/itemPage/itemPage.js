@@ -19,22 +19,21 @@ class ItemPage extends Component {
                     <Grid item xs={12}>
                     </Grid>
                     {this.state.item.map(item =>
-                    <Grid item s>
+                        <Grid item s>
                             <ItemCard
-                                productNumber={item.productNumber}
-                                productName={item.productName}
-                                cost={item.cost}
-                                quantity={item.quantity}
-                                supplier={item.supplier}
-                                category={item.category}
-                                minQuantity={item.minQuantity}
-                                location={item.location}
-                                description={item.description}
-                                picture={item.picture}
+                                PN={item.productNumber}
+                                ProductName={item.productName}
+                                Cost={item.cost}
+                                Quantity={item.quantity}
+                                Supplier={item.supplier}
+                                Category={item.category}
+                                MinQuantity={item.minQuantity}
+                                Location={item.location}
+                                Description={item.description}
                             />
-                            </Grid>
-                        )}
-                    
+                        </Grid>
+                    )}
+
                 </Grid>
 
             </div>

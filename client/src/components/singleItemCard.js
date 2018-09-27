@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import API from '../utils/API'
 import TextField from '@material-ui/core/TextField';
 import Button from "./Button";
+import { Link } from 'react-router-dom';
 import UpLoad from "./upLoad"
 
 const styles = theme => ({
@@ -28,16 +29,16 @@ const styles = theme => ({
 class FilledTextFields extends React.Component {
 
     state = {
-        productNumber: '',
-        productName: '',
-        cost: '',
-        quantity: '',
-        supplier: '',
-        category: '',
-        minQuantity: '',
-        location: '',
-        description: '',
-        picture: ''
+        PN: this.props.PN,
+        ProductName: this.props.ProductName,
+        Cost: '',
+        Quantity: '',
+        Supplier: '',
+        Category: '',
+        MinQuantity: '',
+        Lat: '',
+        Lon: '',
+        description: ''
     };
 
     handleChange = name => event => {
@@ -53,26 +54,12 @@ class FilledTextFields extends React.Component {
     };
 
     buttonClick = () => {
-        console.log("starting to send items")
-        API.saveItem({
-            productNumber: this.state.productNumber,
-            productName: this.state.productName,
-            cost: this.state.cost,
-            quantity: this.state.quantity,
-            supplier: this.state.supplier,
-            category: this.state.category,
-            minQuantity: this.state.minQuantity,
-            location: this.state.location,
-            description: this.state.description
-        })
+        console.log(this.state)
+
     };
 
-    locationFinder = event => {
-        console.log("i see you")
-        function showMap(position) {
-            console.log(position.coords.latitude, position.coords.longitude)
-        };
-        navigator.geolocation.getCurrentPosition(showMap);
+    fileSelectedHandler = event => {
+
     }
 
     render() {
@@ -85,76 +72,85 @@ class FilledTextFields extends React.Component {
                     required
                     id="ProductNumber"
                     label="Product Number"
-                    placeholder="#"
+                    value={this.state.PN}
                     className={classes.textField}
                     onChange={this.handleChange('productNumber')}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
 
                 />
                 <TextField
                     required
                     id="ProductName"
                     label="Product Name"
-                    placeholder="Name"
+                    value={this.state.ProductName}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
                     onChange={this.handleChange('productName')}
                 />
                 <TextField
                     required
                     id="Cost"
                     label="Cost"
-                    placeholder="$"
+                    value={this.state.Cost}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
                     onChange={this.handleChange('cost')}
                 />
                 <TextField
                     required
                     id="Quantity"
                     label="Quantity"
-                    placeholder="#"
+                    value={this.state.Quantity}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
                     onChange={this.handleChange('quantity')}
                 />
                 <TextField
                     id="Supplier"
                     label="Supplier"
-                    placeholder="Name"
+                    value={this.state.Supplier}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
                     onChange={this.handleChange('supplier')}
                 />
                 <TextField
                     id="Category"
                     label="Category"
-                    placeholder="Name"
+                    value={this.state.Category}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
                     onChange={this.handleChange('category')}
                 />
                 <TextField
                     id="MinQuantity"
                     label="minQuantity"
-                    placeholder="#"
+                    value={this.state.MinQuantity}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
                     onChange={this.handleChange('minQuantity')}
                 /><TextField
                     id="Location"
-                    label="Location"
-                    placeholder="#"
+                    label="Location Lat"
+                    value={this.state.Lat}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
+                    onChange={this.handleChange('location')}
+                />
+                <TextField
+                    id="Location"
+                    label="Location Long"
+                    value={this.state.Lon}
+                    className={classes.textField}
+                    margin="normal"
+                    variant="outlined"
                     onChange={this.handleChange('location')}
                 />
                 <TextField
@@ -164,19 +160,24 @@ class FilledTextFields extends React.Component {
                     fullWidth
                     multiline
                     rows="4"
-                    placeholder="Description"
+                    value={this.state.Description}
                     className={classes.textField}
                     margin="normal"
-                    variant="filled"
+                    variant="outlined"
                     onChange={this.handleChange('description')}
                 />
-                <Button
-                    onClick={this.locationFinder}
-                    name='Load Location' />
+                <input
+                    style={{ display: 'none' }}
+                    type='file'
+                    onChange={this.fileSelectedHandler}
+                    ref={fileInput => this.fileInput = fileInput} />
                 <Button
                     onClick={this.buttonClick}
-                    name='Submit'
+                    name='Update'
                 />
+                <Button size="small" color="white" component={Link} to="/itemPage"
+                    name='Back'>
+                </Button>
 
             </form >
         );

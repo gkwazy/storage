@@ -41,7 +41,7 @@ function MediaCard(props) {
             </CardActionArea>
             <CardActions>
 
-                <Button size="small" color="white" >
+                <Button size="small" color="white" component={Link} to="/itemPage">
                     STORE HOUSE
         </Button>
                 <Button size="small" color="white" component={Link} to="/formPage">

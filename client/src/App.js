@@ -4,6 +4,7 @@ import AppBar from "./components/AppBar"
 import formPage from "./pages/formPage";
 import mainPage from "./pages/mainPage"
 import itemPage from "./pages/itemPage"
+import singleItemPage from "./pages/singleItemPage";
 const App = () => (
     <Router>
         <div>
@@ -12,6 +13,7 @@ const App = () => (
                 <Route exact path="/" component={mainPage} />
                 <Route exact path="/formPage" component={formPage} />
                 <Route exact path="/itemPage" component={itemPage} />
+                <Route path="/singleItemPage/" component={singleItemPage} />
             </Switch>
         </div>
     </Router>
