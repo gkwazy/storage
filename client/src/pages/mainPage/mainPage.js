@@ -10,7 +10,13 @@ const MyComponent = () => (
             </Grid>
             <Grid item xs={12}>
             </Grid>
-            <Grid item xs={24}>
+            <Grid
+                xs={12}
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+            >
                 <FrontPageCard />
             </Grid>
 

@@ -23,22 +23,22 @@ function MediaCard(props) {
     const { classes } = props;
     return (
         <Card className={classes.card}>
-            <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image="../pic/warehouse.jpg"
-                    title="storage area"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="headline" component="h2">
-                        Welcome
+
+            <CardMedia
+                className={classes.media}
+                image="../pic/warehouse.jpg"
+                title="storage area"
+            />
+            <CardContent>
+                <Typography gutterBottom variant="headline" component="h2">
+                    Welcome
           </Typography>
-                    <Typography component="p">
-                        To checkout a item or add to your stock please click the STORE HOUSE link
-                        or to add a new item and print a label click the ADD link below
+                <Typography component="p">
+                    To checkout a item or add to your stock please click the STORE HOUSE link
+                    or to add a new item and print a label click the ADD link below
           </Typography>
-                </CardContent>
-            </CardActionArea>
+            </CardContent>
+
             <CardActions>
 
                 <Button size="small" color="white" component={Link} to="/itemPage">

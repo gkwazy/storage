@@ -34,10 +34,10 @@ function MediaCard(props) {
                         {props.Number}
                     </Typography>
                     <Typography component="p">
-                        Location: {props.location}
+                        Quantity: {props.Quantity}
                     </Typography>
                     <Typography component="p">
-                        Description:{props.description}
+                        Description: {props.Description}
                     </Typography>
 
                 </CardContent>
