@@ -100,14 +100,14 @@ function SearchAppBar(props) {
                         <div className={classes.searchIcon}>
                             <SearchIcon />
                         </div>
-                        <Input
+                        {/* <Input
                             placeholder="Search…"
                             disableUnderline
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
                             }}
-                        />
+                        /> */}
                     </div>
                 </Toolbar>
             </AppBar>
