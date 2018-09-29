@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from "../../components/Button";
 import UpLoad from "../../components/upLoad"
 import Card from '@material-ui/core/Card';
+import AppBar from "../../components/AppBar";
+
 
 const styles = theme => ({
     container: {
@@ -63,25 +65,14 @@ class FilledTextFields extends React.Component {
       }
 
     buttonClick = () => {
+  
         console.log("starting to send items")
-        // API.saveItem({
-        //     PN: this.state.PN,
-        //     Name: this.state.Name,
-        //     Cost: this.state.Cost,
-        //     Quantity: this.state.Quantity,
-        //     Supplier: this.state.Supplier,
-        //     Category: this.state.Category,
-        //     MinQuantity: this.state.MinQuantity,
-        //     location: this.state.location,
-        //     Description: this.state.Description,
-        //     picture: this.picture
-        // })
         const product  = this.state;
         console.log("this is "+product.PN)
-        fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        fetch(`http://localhost:4001/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
         &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}&Lat=${product.Lat}&Lon=${product.Lon}
         `)
-        .then(this.getProducts)
+        .then(document.getElementById("PN").reset())
         .catch(err => console.error(err))
     };
 
@@ -93,13 +84,16 @@ class FilledTextFields extends React.Component {
         },
             () => console.log("state3: " + JSON.stringify(this.state.picture))
         );
-    }
+    };
 
     render() {
+
+
         const { classes } = this.props;
 
         return (
             <Card className={classes.card}>
+                  <AppBar/>
             <form className={classes.container} noValidate autoComplete="on">
 
                 <TextField

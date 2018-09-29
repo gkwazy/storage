@@ -82,6 +82,8 @@ function HomeIcon(props) {
     );
 }
 
+
+
 function SearchAppBar(props) {
 
     const { classes } = props;
@@ -107,6 +109,9 @@ function SearchAppBar(props) {
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
                             }}
+
+                            onSubmit={props.query}
+                     
                         />
                     </div>
                 </Toolbar>

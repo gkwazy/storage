@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ItemCard from "../../components/itemCard"
 import Grid from "@material-ui/core/Grid"
+import AppBar from "../../components/AppBar"
 // import item from "../../itemTest.json";
 
 
@@ -9,28 +10,31 @@ class ItemPage extends Component {
 
     state = {
 
-        products: []
+        products: [],
+        query: []
 
     };
 
     componentDidMount() {
         this.getProducts()
-      
+
       }
     
-      getProducts = _ => {  fetch('http://localhost:4000/products')
+      getProducts = _ => {  fetch('http://localhost:4001/products')
       .then(response => response.json())
       .then(response => this.setState({ products: response.data }))
-      .then(console.log(this.state.products))
       .catch(err => console.error(err))
+    }
 
-    
+    search = (e) => {
+        console.log(e)
     }
 
     render() {
         // console.log(this.state.item[0].productName)
         return (
             <div>
+                 <AppBar query = {this.search.bind(this, "IT WORKS")}/>
                 <Grid container spacing={16}>
                     <Grid item xs={12}>
                     </Grid>
@@ -50,9 +54,7 @@ class ItemPage extends Component {
                             />
                             </Grid>
                         )}
-                    
                 </Grid>
-
             </div>
         );
     }

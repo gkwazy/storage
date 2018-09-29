@@ -24,18 +24,20 @@ function MediaCard(props) {
     console.log(props);
     return (
         <Card className={classes.card}>
-            <CardActionArea>
+            <CardActionArea id= {props.PN}>
                 <CardMedia
-                    className={classes.media}
-                    image={props.picture}
-                    title={props.PN}
+                    className={classes.PN}
+                    // image={props.picture}
+                    // id= {props.PN}
+                    title={props.Description}
                 />
+                        
                 <CardContent>
-                    <Typography gutterBottom variant="headline" component="h2">
-                        {props.Number}
+                    <Typography gutterBottom variant="headline" component="h2" >
+                        {props.Category}
                     </Typography>
                     <Typography component="p">
-                        Quantity: {props.Quantity}
+                        ID: {props.PN}
                     </Typography>
                     <Typography component="p">
                         Description: {props.Description}

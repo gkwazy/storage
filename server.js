@@ -4,7 +4,7 @@ const mysql = require('mysql')
 const app = express();
 const path = require('path')
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
@@ -64,6 +64,23 @@ app.get('/products', (req, res) => {
             })
         }
         })
+})
+
+app.get('/products/query', (req, res) => {
+    const {PN, Cost, Description, Quantity, MinQuantity, Supplier, Category } = req.query;
+    const INSERT_PRODUCT_QUERY = `INSERT INTO products (PN, Cost, Description, Quantity, MinQuantity, Supplier, Category) 
+    VALUES( '${PN}' , ${Cost} , '${Description}', ${Quantity}, ${MinQuantity} , '${Supplier}' , '${Category}')`
+    connection.query(INSERT_PRODUCT_QUERY, (err, results) =>{
+       
+        if(err) {
+            throw err
+        }
+
+    })
+
+    console.log(PN, Cost, Description, Quantity, MinQuantity, Supplier, Category)
+    
+
 })
 
 // app.listen(4000, () => {

@@ -8,7 +8,7 @@ import itemPage from "./pages/itemPage"
 const App = () => (
     <Router>
         <div>
-            <AppBar />
+            {/* <AppBar /> */}
             <Switch>
                 <Route exact path="/" component={mainPage} />
                 <Route exact path="/formPage" component={formPage} />
