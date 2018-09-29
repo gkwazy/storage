@@ -23,9 +23,9 @@ class ItemPage extends Component {
     //   getProducts = _ => {  fetch('http://localhost:4001/products')
        getProducts = _ => {  fetch('www.stockandtrack.com/products')
        .then(response => response.json())
-    // .then(response => response.text())
-    // .then(text => console.log(text))
-       .then(response => this.setState({ products: response.data }))
+    .then(response => response.text())
+    .then(text => console.log(text))
+    //    .then(response => this.setState({ products: response.data }))
       .catch(err => console.error(err))
     }
 
