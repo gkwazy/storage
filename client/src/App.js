@@ -5,8 +5,11 @@ import formPage from "./pages/formPage";
 import mainPage from "./pages/mainPage"
 import itemPage from "./pages/itemPage"
 import singleItemPage from "./pages/singleItemPage";
+
+let IDToken = "garret";
 const App = () => (
-    <Router>
+    <Router
+        basename={IDToken}>
         <div>
             <AppBar />
             <Switch>

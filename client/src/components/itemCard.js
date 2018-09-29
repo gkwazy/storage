@@ -23,9 +23,10 @@ const styles = {
 function MediaCard(props) {
     const { classes } = props;
     console.log(props);
+    let PN = "/singleItemPage/" + props.PN;
     return (
         <Card className={classes.card}>
-            <CardActionArea component={Link} to="/singleItemPage">
+            <CardActionArea component={Link} to={PN}>
 
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" variant="display3"            >

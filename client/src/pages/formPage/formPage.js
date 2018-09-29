@@ -36,7 +36,8 @@ class FilledTextFields extends React.Component {
         Supplier: '',
         Category: '',
         MinQuantity: '',
-        location: '',
+        lat: '',
+        long: '',
         Description: 'first'
 
     };
@@ -62,26 +63,17 @@ class FilledTextFields extends React.Component {
     }
 
     buttonClick = () => {
-        console.log("starting to send items")
-        // API.saveItem({
-        //     PN: this.state.PN,
-        //     Name: this.state.Name,
-        //     Cost: this.state.Cost,
-        //     Quantity: this.state.Quantity,
-        //     Supplier: this.state.Supplier,
-        //     Category: this.state.Category,
-        //     MinQuantity: this.state.MinQuantity,
-        //     location: this.state.location,
-        //     Description: this.state.Description,
-        //     picture: this.picture
-        // })
         const product = this.state;
-        console.log("this is " + product.PN)
-        fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        if (product.PN == '' || product.Cost == '' || product.Name == '' || product.Quantity == "" || product.Description == '') {
+            alert("Please fill in reaquired fields mark with * before submiting")
+        } else {
+            console.log("this is " + product.PN)
+            fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
         &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}&Lat=${product.Lat}&Lon=${product.Lon}
         `)
-            .then(this.getProducts)
-            .catch(err => console.error(err))
+                .then(this.getProducts)
+                .catch(err => console.error(err))
+        }
     };
 
     getLocation = () => {
@@ -107,13 +99,10 @@ class FilledTextFields extends React.Component {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
             console.log("Latitude is " + latitude + "Longitude is " + longitude)
-
-            // output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-
-            var img = new Image();
-            img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-            // output.appendChild(img);
+            this.setState({
+                lat: latitude,
+                long: longitude
+            })
         }
 
         function error() {
@@ -122,7 +111,7 @@ class FilledTextFields extends React.Component {
 
         // output.innerHTML = "<p>Locating…</p>";
 
-        navigator.geolocation.getCurrentPosition(success, error);
+        navigator.geolocation.getCurrentPosition(success.bind(this), error);
     }
     render() {
         console.log(JSON.stringify(this.props.classes))
@@ -204,6 +193,7 @@ class FilledTextFields extends React.Component {
                         className={classes.textField}
                         margin="normal"
                         variant="filled"
+                        fullWidth
                         onChange={this.handleChange('MinQuantity')}
                     /><TextField
                         required

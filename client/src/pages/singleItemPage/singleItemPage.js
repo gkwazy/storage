@@ -95,7 +95,7 @@ class outlinedTextFields extends React.Component {
                     />
                     <Button
                         color="primary"
-                        component={Link} to="/formPage"
+                        component={Link} to="/itemPage"
                         name='Back'>
                     </Button>
                     <TextField

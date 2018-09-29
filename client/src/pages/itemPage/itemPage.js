@@ -10,8 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
-
-// import item from "../../itemTest.json";
+import item from "../../itemTest.json";
 
 const styles = theme => ({
     container: {
@@ -35,7 +34,8 @@ class ItemPage extends React.Component {
     state = {
 
         products: [],
-        itemCards: ''
+        itemCards: '',
+        item
 
 
     };
@@ -68,12 +68,12 @@ class ItemPage extends React.Component {
                             <Grid container spacing={16}>
                                 <Grid item xs={12}>
                                 </Grid>
-                                {this.state.products.map(item =>
+                                {this.state.item.map(item =>
                                     <Grid item s>
                                         <ItemCard
                                             PN={item.PN}
                                             Name={item.Name}
-                                            Cost={item.cost}
+                                            cost={item.cost}
                                             Quantity={item.Quantity}
                                             Supplier={item.Supplier}
                                             Category={item.Category}
