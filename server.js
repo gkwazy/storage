@@ -30,9 +30,9 @@ console.log(connection)
 app.use(cors());
 
 
-app.get('/', (req, res) => {
-    res.send('go to /products to see products')
-});
+// app.get('/', (req, res) => {
+//     res.send('go to /products to see products')
+// });
 
 app.get('/products/add', (req, res) => {
     const {PN, Cost, Description, Quantity, MinQuantity, Supplier, Category } = req.query;
@@ -53,6 +53,7 @@ app.get('/products/add', (req, res) => {
 
 
 app.get('/products', (req, res) => { 
+    console.log("you have hit /products")
     const SELECT_ALL_PRODUCTS_QUERY = 'SELECT * FROM products'
     connection.query(SELECT_ALL_PRODUCTS_QUERY, (err, results) => {
         if(err) {
