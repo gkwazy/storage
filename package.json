@@ -2,7 +2,7 @@
   "name": "stockandtrack",
   "version": "1.0.0",
   "engines": {
-    "yarn": "1.4.0"
+    "yarn": "1.9.4"
   },
   "main": "server.js",
   "scripts": {
