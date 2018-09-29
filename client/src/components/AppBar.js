@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import SvgIcon from '@material-ui/core/SvgIcon'
@@ -96,19 +95,6 @@ function SearchAppBar(props) {
                         <HomeIcon className={classes.icon} />
                     </Button>
                     <div className={classes.grow} />
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        {/* <Input
-                            placeholder="Search…"
-                            disableUnderline
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                        /> */}
-                    </div>
                 </Toolbar>
             </AppBar>
         </div>

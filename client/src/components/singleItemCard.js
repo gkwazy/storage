@@ -28,39 +28,6 @@ const styles = theme => ({
 
 class FilledTextFields extends React.Component {
 
-    state = {
-        PN: this.props.PN,
-        ProductName: this.props.ProductName,
-        Cost: '',
-        Quantity: '',
-        Supplier: '',
-        Category: '',
-        MinQuantity: '',
-        Lat: '',
-        Lon: '',
-        description: ''
-    };
-
-    handleChange = name => event => {
-        console.log("name: " + name);
-        console.log("state1: " + JSON.stringify(this.state))
-        console.log("event: " + event.target.value)
-        this.setState({
-            [name]: event.target.value,
-
-        },
-            () => console.log("state1: " + JSON.stringify(this.state))
-        );
-    };
-
-    buttonClick = () => {
-        console.log(this.state)
-
-    };
-
-    fileSelectedHandler = event => {
-
-    }
 
     render() {
         const { classes } = this.props;
@@ -72,9 +39,9 @@ class FilledTextFields extends React.Component {
                     required
                     id="ProductNumber"
                     label="Product Number"
-                    value={this.state.PN}
+                    value={this.props.PN}
                     className={classes.textField}
-                    onChange={this.handleChange('productNumber')}
+                    onChange={this.handleChange('PN')}
                     margin="normal"
                     variant="outlined"
 
@@ -83,7 +50,7 @@ class FilledTextFields extends React.Component {
                     required
                     id="ProductName"
                     label="Product Name"
-                    value={this.state.ProductName}
+                    value={this.props.ProductName}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -93,7 +60,7 @@ class FilledTextFields extends React.Component {
                     required
                     id="Cost"
                     label="Cost"
-                    value={this.state.Cost}
+                    value={this.props.Cost}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -103,7 +70,7 @@ class FilledTextFields extends React.Component {
                     required
                     id="Quantity"
                     label="Quantity"
-                    value={this.state.Quantity}
+                    value={this.props.Quantity}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -112,7 +79,7 @@ class FilledTextFields extends React.Component {
                 <TextField
                     id="Supplier"
                     label="Supplier"
-                    value={this.state.Supplier}
+                    value={this.props.Supplier}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -121,7 +88,7 @@ class FilledTextFields extends React.Component {
                 <TextField
                     id="Category"
                     label="Category"
-                    value={this.state.Category}
+                    value={this.props.Category}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -130,7 +97,7 @@ class FilledTextFields extends React.Component {
                 <TextField
                     id="MinQuantity"
                     label="minQuantity"
-                    value={this.state.MinQuantity}
+                    value={this.props.MinQuantity}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -138,7 +105,7 @@ class FilledTextFields extends React.Component {
                 /><TextField
                     id="Location"
                     label="Location Lat"
-                    value={this.state.Lat}
+                    value={this.props.Lat}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -147,7 +114,7 @@ class FilledTextFields extends React.Component {
                 <TextField
                     id="Location"
                     label="Location Long"
-                    value={this.state.Lon}
+                    value={this.props.Lon}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -160,7 +127,7 @@ class FilledTextFields extends React.Component {
                     fullWidth
                     multiline
                     rows="4"
-                    value={this.state.Description}
+                    value={this.props.Description}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"

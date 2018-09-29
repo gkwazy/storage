@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core"
-import indigo from '@material-ui/core/colors/indigo';
+import red from '@material-ui/core/colors/red';
+import blue from '@material-ui/core/colors/blue';
 
 const theme = createMuiTheme(
     {
@@ -12,8 +13,10 @@ const theme = createMuiTheme(
             primary: {
                 main: '#004d40',
             },
-            secondary: indigo,
+            secondary: red,
         },
+
+
 
     }
 );

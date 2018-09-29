@@ -3,17 +3,14 @@ import ItemCard from "../../components/itemCard"
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid"
-import SearchIcon from '@material-ui/icons/Search';
 import Input from '@material-ui/core/Input';
-import Button from "../../components/Button";
-import UpLoad from "../../components/upLoad";
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
+
 // import item from "../../itemTest.json";
 
 const styles = theme => ({
@@ -37,7 +34,9 @@ class ItemPage extends React.Component {
 
     state = {
 
-        products: []
+        products: [],
+        itemCards: ''
+
 
     };
 
@@ -56,36 +55,42 @@ class ItemPage extends React.Component {
 
     }
 
-    loadSearch() {
-        <div>
-            <Grid container spacing={24}>
-                <Grid item xs={12}>
-                </Grid>
-                <Grid item xs={12}>
-                </Grid>
-                <Grid container spacing={16}>
-                    <Grid item xs={12}>
-                    </Grid>
-                    {this.state.products.map(item =>
-                        <Grid item s>
-                            <ItemCard
-                                PN={item.PN}
-                                Name={item.Name}
-                                Cost={item.cost}
-                                Quantity={item.Quantity}
-                                Supplier={item.Supplier}
-                                Category={item.Category}
-                                minQuantity={item.minQuantity}
-                                lat={item.lat}
-                                lon={item.lon}
-                                Description={item.Description}
-                            />
-                        </Grid>
-                    )}
+    loadSearch = (e) => {
+        if (e.keyCode == 13) {
+            this.setState({
+                itemCards: (
+                    < div >
+                        <Grid container spacing={24}>
+                            <Grid item xs={12}>
+                            </Grid>
+                            <Grid item xs={12}>
+                            </Grid>
+                            <Grid container spacing={16}>
+                                <Grid item xs={12}>
+                                </Grid>
+                                {this.state.products.map(item =>
+                                    <Grid item s>
+                                        <ItemCard
+                                            PN={item.PN}
+                                            Name={item.Name}
+                                            Cost={item.cost}
+                                            Quantity={item.Quantity}
+                                            Supplier={item.Supplier}
+                                            Category={item.Category}
+                                            minQuantity={item.minQuantity}
+                                            lat={item.lat}
+                                            lon={item.lon}
+                                            Description={item.Description}
+                                        />
+                                    </Grid>
+                                )}
 
-                </Grid>
-            </Grid>
-        </div>
+                            </Grid>
+                        </Grid>
+                    </div >
+                )
+            })
+        }
     }
     render() {
         console.log(JSON.stringify(this.props))
@@ -109,16 +114,17 @@ class ItemPage extends React.Component {
 
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
-                                    <SearchIcon />
-
                                     <Input
                                         placeholder="Search…"
-                                        disableUnderline
                                         classes={{
                                             root: classes.inputRoot,
                                             input: classes.inputInput,
                                         }}
+                                        onKeyDown={this.loadSearch}
                                     />
+                                </div>
+                                <div>
+                                    {this.state.itemCards}
                                 </div>
                             </div>
                         </CardContent>

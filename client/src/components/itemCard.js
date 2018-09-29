@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 
+
 const styles = {
     card: {
         maxWidth: 345,
@@ -28,7 +29,7 @@ function MediaCard(props) {
 
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" variant="display3"            >
-                        {props.ProductName}
+                        {props.Name}
                     </Typography>
                     <Typography gutterBottom variant="headline" component="h2">
                         {props.Number}

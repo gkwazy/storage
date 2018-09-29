@@ -138,6 +138,7 @@ class FilledTextFields extends React.Component {
                         label="Product Number"
                         placeholder="#"
                         className={classes.textField}
+                        fullWidth
                         onChange={this.handleChange('PN')}
                         margin="normal"
                         variant="filled"
@@ -149,6 +150,7 @@ class FilledTextFields extends React.Component {
                         label="Product Name"
                         placeholder="Name"
                         className={classes.textField}
+                        fullWidth
                         margin="normal"
                         variant="filled"
                         onChange={this.handleChange('Name')}
@@ -159,6 +161,7 @@ class FilledTextFields extends React.Component {
                         label="Cost"
                         placeholder="$"
                         className={classes.textField}
+                        fullWidth
                         margin="normal"
                         variant="filled"
                         onChange={this.handleChange('Cost')}
@@ -169,6 +172,7 @@ class FilledTextFields extends React.Component {
                         label="Quantity"
                         placeholder="#"
                         className={classes.textField}
+                        fullWidth
                         margin="normal"
                         variant="filled"
                         onChange={this.handleChange('Quantity')}
@@ -178,6 +182,7 @@ class FilledTextFields extends React.Component {
                         label="Supplier"
                         placeholder="Name"
                         className={classes.textField}
+                        fullWidth
                         margin="normal"
                         variant="filled"
                         onChange={this.handleChange('Supplier')}
@@ -187,6 +192,7 @@ class FilledTextFields extends React.Component {
                         label="Category"
                         placeholder="Name"
                         className={classes.textField}
+                        fullWidth
                         margin="normal"
                         variant="filled"
                         onChange={this.handleChange('Category')}
