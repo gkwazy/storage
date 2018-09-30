@@ -54,13 +54,7 @@ class FilledTextFields extends React.Component {
         );
     };
 
-    addProduct = () => {
-        const { product } = this.state;
-        console.log("this is " + product)
-        // fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}`)
-        // // .then(this.getProducts)
-        // .catch(err => console.error(err))
-    }
+
 
     buttonClick = () => {
         const product = this.state;
@@ -76,17 +70,6 @@ class FilledTextFields extends React.Component {
         }
     };
 
-    getLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.showPosition);
-        } else {
-            console.log("Geolocation is not supported by this browser.");
-        }
-    }
-    showPosition = (position) => {
-        console.log("Latitude: " + position.coords.latitude +
-            "Longitude: " + position.coords.longitude);
-    };
     geoFindMe = () => {
         var output = document.getElementById("out");
 
