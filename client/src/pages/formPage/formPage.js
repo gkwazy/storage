@@ -72,7 +72,7 @@ class FilledTextFields extends React.Component {
         // fetch(`http://localhost:4001/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
         // &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
         // `)
-        fetch(`/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        fetch(`http://stockandtrack.com/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
         &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
         `)
         // .then(document.getElementById("PN").reset())
