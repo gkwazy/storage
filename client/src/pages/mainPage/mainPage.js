@@ -12,13 +12,16 @@ const MyComponent = () => (
             </Grid>
             <Grid item xs={12}>
             </Grid>
-            <Grid item xs={4}>
-            </Grid>
-            <Grid item xs={4}>
+            <Grid
+                xs={12}
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+            >
                 <FrontPageCard />
             </Grid>
-            <Grid item xs={4}>
-            </Grid>
+
         </Grid>
 
     </div>

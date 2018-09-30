@@ -16,7 +16,7 @@ function ContainedButtons(props) {
     const { classes } = props;
     return (
         <div>
-            <Button variant="contained" color="primary" className={classes.button} {...props}>
+            <Button className={classes.button} {...props}>
                 {props.name}
             </Button>
         </div>

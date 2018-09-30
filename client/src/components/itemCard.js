@@ -10,6 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 // import { Link } from 'react-router-dom'
 
+
 const styles = {
     card: {
         maxWidth: 345,
@@ -22,19 +23,17 @@ const styles = {
 function MediaCard(props) {
     const { classes } = props;
     console.log(props);
+    let PN = "/singleItemPage/" + props.PN;
     return (
         <Card className={classes.card}>
-            <CardActionArea id= {props.PN}>
-                <CardMedia
-                    className={classes.PN}
-                    // image={props.picture}
-                    // id= {props.PN}
-                    title={props.Description}
-                />
-                        
+            <CardActionArea component={Link} to={PN}>
+
                 <CardContent>
-                    <Typography gutterBottom variant="headline" component="h2" >
-                        {props.Category}
+                    <Typography className={classes.title} color="textSecondary" variant="display3"            >
+                        {props.Name}
+                    </Typography>
+                    <Typography gutterBottom variant="headline" component="h2">
+                        {props.Number}
                     </Typography>
                     <Typography component="p">
                         ID: {props.PN}

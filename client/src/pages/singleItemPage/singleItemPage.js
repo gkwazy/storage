@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import API from '../../utils/API'
 import TextField from '@material-ui/core/TextField';
 import Button from "../../components/Button";
-// import UpLoad from "../../components/upLoad"
+import UpLoad from "../../components/upLoad"
 import Card from '@material-ui/core/Card';
-import AppBar from "../../components/AppBar";
-
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     container: {
@@ -28,10 +27,10 @@ const styles = theme => ({
 });
 
 
-class FilledTextFields extends React.Component {
+class outlinedTextFields extends React.Component {
 
     state = {
-        PN: 'itworkssssss',
+        PN: 'qwerty',
         Name: '',
         Cost: '1',
         Quantity: '1',
@@ -56,47 +55,26 @@ class FilledTextFields extends React.Component {
         );
     };
 
+    addProduct = () => {
+        const { product } = this.state;
+        console.log("this is " + product)
 
+    }
 
     buttonClick = () => {
+        console.log("starting to send items")
+
         const product = this.state;
-        if (product.PN == '' || product.Cost == '' || product.Name == '' || product.Quantity == "" || product.Description == '') {
-            alert("Please fill in reaquired fields mark with * before submiting")
-        } else {
-            console.log("this is " + product.PN)
-            fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        console.log("this is " + product.PN)
+        fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
         &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}&Lat=${product.Lat}&Lon=${product.Lon}
         `)
-                .then(this.getProducts)
-                .catch(err => console.error(err))
-        }
+            .then(this.getProducts)
+            .catch(err => console.error(err))
     };
 
-    geoFindMe = () => {
-        var output = document.getElementById("out");
-
-        if (!navigator.geolocation) {
-            // output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-            return;
-        }
-
-        function success(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            console.log("Latitude is " + latitude + "Longitude is " + longitude)
-            this.setState({
-                lat: latitude,
-                long: longitude
-            })
-        }
-
-        function error() {
-            // output.innerHTML = "Unable to retrieve your location";
-        }
-
-        // output.innerHTML = "<p>Locating…</p>";
-
-        navigator.geolocation.getCurrentPosition(success.bind(this), error);
+    remoteItem = () => {
+        console.log("removed!!!")
     }
     render() {
         console.log(JSON.stringify(this.props.classes))
@@ -105,80 +83,83 @@ class FilledTextFields extends React.Component {
         return (
             <Card className={classes.card}>
                 <form className={classes.container} noValidate autoComplete="on">
+                    <Button
+                        onClick={this.remoteItem}
+                        name='Delete'
+                        color="secondary" />
 
+                    <Button
+                        onClick={this.buttonClick}
+                        color="#2a3eb1"
+                        name='Update'
+                    />
+                    <Button
+                        color="primary"
+                        component={Link} to="/itemPage"
+                        name='Back'>
+                    </Button>
                     <TextField
                         required
                         id="PN"
                         label="Product Number"
-                        placeholder="#"
+                        value={this.state.PN}
                         className={classes.textField}
                         fullWidth
                         onChange={this.handleChange('PN')}
                         margin="normal"
-                        variant="filled"
+                        variant="outlined"
 
-                    />
-                    <TextField
-                        required
-                        id="Name"
-                        label="Product Name"
-                        placeholder="Name"
-                        className={classes.textField}
-                        fullWidth
-                        margin="normal"
-                        variant="filled"
-                        onChange={this.handleChange('Name')}
                     />
                     <TextField
                         required
                         id="Cost"
                         label="Cost"
-                        placeholder="$"
+                        value={this.state.Cost}
                         className={classes.textField}
                         fullWidth
                         margin="normal"
-                        variant="filled"
+                        variant="outlined"
                         onChange={this.handleChange('Cost')}
                     />
                     <TextField
                         required
                         id="Quantity"
                         label="Quantity"
-                        placeholder="#"
+                        value={this.state.Quantity}
                         className={classes.textField}
                         fullWidth
                         margin="normal"
-                        variant="filled"
+                        variant="outlined"
                         onChange={this.handleChange('Quantity')}
                     />
                     <TextField
                         id="Supplier"
                         label="Supplier"
-                        placeholder="Name"
+                        value={this.state.Supplier}
                         className={classes.textField}
                         fullWidth
                         margin="normal"
-                        variant="filled"
+                        variant="outlined"
                         onChange={this.handleChange('Supplier')}
                     />
                     <TextField
                         id="Category"
                         label="Category"
-                        placeholder="Name"
+                        value={this.state.Category}
                         className={classes.textField}
                         fullWidth
                         margin="normal"
-                        variant="filled"
+                        variant="outlined"
                         onChange={this.handleChange('Category')}
                     />
                     <TextField
                         id="MinQuantity"
                         label="MinQuantity"
-                        placeholder="#"
+                        value={this.state.MinQuantity}
                         className={classes.textField}
-                        margin="normal"
-                        variant="filled"
                         fullWidth
+                        margin="normal"
+                        variant="outlined"
                         onChange={this.handleChange('MinQuantity')}
                     /><TextField
                         required
@@ -187,28 +168,20 @@ class FilledTextFields extends React.Component {
                         fullWidth
                         multiline
                         rows="4"
-                        placeholder="Description"
+                        value={this.state.Description}
                         className={classes.textField}
                         margin="normal"
-                        variant="filled"
+                        variant="outlined"
                         onChange={this.handleChange('Description')}
                     />
-                    <Button
-                        onClick={this.geoFindMe}
-                        name='Load Location' />
-                    <Button
-                        onClick={this.buttonClick}
-                        name='Submit'
-                    />
-
                 </form >
             </Card>
         );
     }
 }
 
-FilledTextFields.propTypes = {
+outlinedTextFields.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FilledTextFields);
+export default withStyles(styles)(outlinedTextFields);
