@@ -31,13 +31,13 @@ const styles = theme => ({
 class FilledTextFields extends React.Component {
 
     state = {
-        PN: 'qwerty',
+        PN: 'itworkssssss',
         Name: '',
         Cost: '1',
-        Quantity: '1',
-        Supplier: '',
-        Category: '',
-        MinQuantity: '',
+        Quantity: 1,
+        Supplier: 'place',
+        Category: 'stuff',
+        MinQuantity: 2,
         location: '',
         Description: 'first',
         picture: ''
@@ -68,11 +68,14 @@ class FilledTextFields extends React.Component {
   
         console.log("starting to send items")
         const product  = this.state;
-        console.log("this is "+product.PN)
-        fetch(`http://localhost:4001/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
-        &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}&Lat=${product.Lat}&Lon=${product.Lon}
+        console.log("this is "+product.Quantity)
+        // fetch(`http://localhost:4001/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        // &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
+        // `)
+        fetch(`/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
         `)
-        .then(document.getElementById("PN").reset())
+        // .then(document.getElementById("PN").reset())
         .catch(err => console.error(err))
     };
 
