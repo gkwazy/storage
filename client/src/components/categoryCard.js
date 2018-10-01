@@ -21,27 +21,21 @@ const styles = {
 
 function MediaCard(props) {
     const { classes } = props;
+    console.log(props);
     let PN = "/singleItemPage/" + props.PN;
     return (
         <Card className={classes.card}>
-            <CardActionArea component={Link} to={PN}>
+            <CardActionArea
+                onClick={props.loadSearch}>
 
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary" variant="display3"            >
-                        {props.Name}
-                    </Typography>
-                    <Typography gutterBottom variant="headline" component="h2">
-                        {props.Number}
-                    </Typography>
-                    <Typography component="p">
-                        ID: {props.PN}
-                    </Typography>
-                    <Typography component="p">
-                        Description: {props.Description}
+                    <Typography className={classes.title} color="textSecondary" variant="display1"            >
+                        {props.Category}
                     </Typography>
 
                 </CardContent>
             </CardActionArea>
+
         </Card>
 
 
