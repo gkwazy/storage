@@ -1,0 +1,26 @@
+{
+    "development": {
+        "username": "stockAndTrack",
+        "password": "stockAndTrack2018",
+        "database": "stockAndTrack",
+        "host": "stockandtrack.cnpaonpk4jsm.us-west-1.rds.amazonaws.com",
+        "port": 3306,
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "stockAndTrack",
+        "password": "stockAndTrack2018",
+        "database": "stockAndTrack",
+        "host": "stockandtrack.cnpaonpk4jsm.us-west-1.rds.amazonaws.com",
+        "port": 3306,
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "stockAndTrack",
+        "password": "stockAndTrack2018",
+        "database": "stockAndTrack",
+        "host": "stockandtrack.cnpaonpk4jsm.us-west-1.rds.amazonaws.com",
+        "port": 3306,
+        "dialect": "mysql"
+    }
+  }
