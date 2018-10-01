@@ -7,6 +7,7 @@
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
+    "startchange": "node server.js",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
     "client": "cd client && yarn run start",
@@ -15,11 +16,15 @@
     "heroku-postbuild": "yarn run build"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "mysql": "^2.16.0",
+    "mysql2": "^1.6.1",
     "path": "^0.12.7",
-    "react-scripts": "^1.1.5"
+    "react-materialize": "^2.4.5",
+    "react-scripts": "^1.1.5",
+    "sequelize": "^4.39.0"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",

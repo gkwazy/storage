@@ -43,9 +43,9 @@ class FilledTextFields extends React.Component {
     };
 
     handleChange = name => event => {
-        console.log("name: " + name);
-        console.log("state1: " + JSON.stringify(this.state))
-        console.log("event: " + event.target.value)
+        // console.log("name: " + name);
+        // console.log("state1: " + JSON.stringify(this.state))
+        // console.log("event: " + event.target.value)
         this.setState({
             [name]: event.target.value,
 
