@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import API from '../../utils/API'
 import TextField from '@material-ui/core/TextField';
-import Button from "../../components/Button";
-import UpLoad from "../../components/upLoad"
+import Button from "@material-ui/core/Button";
 import Card from '@material-ui/core/Card';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Grid } from '@material-ui/core';
 
 const styles = theme => ({
     container: {
@@ -81,101 +79,118 @@ class outlinedTextFields extends React.Component {
         const { classes } = this.props;
 
         return (
-            <Card className={classes.card}>
-                <form className={classes.container} noValidate autoComplete="on">
-                    <Button
-                        onClick={this.remoteItem}
-                        name='Delete'
-                        color="secondary" />
+            <div>
 
-                    <Button
-                        onClick={this.buttonClick}
-                        color="#2a3eb1"
-                        name='Update'
-                    />
-                    <Button
-                        color="primary"
-                        component={Link} to="/itemPage"
-                        name='Back'>
-                    </Button>
-                    <TextField
-                        required
-                        id="PN"
-                        label="Product Number"
-                        value={this.state.PN}
-                        className={classes.textField}
-                        fullWidth
-                        onChange={this.handleChange('PN')}
-                        margin="normal"
-                        variant="outlined"
+                <Card className={classes.card}>
+                    <form className={classes.container} noValidate autoComplete="on">
 
-                    />
-                    <TextField
-                        required
-                        id="Cost"
-                        label="Cost"
-                        value={this.state.Cost}
-                        className={classes.textField}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        onChange={this.handleChange('Cost')}
-                    />
-                    <TextField
-                        required
-                        id="Quantity"
-                        label="Quantity"
-                        value={this.state.Quantity}
-                        className={classes.textField}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        onChange={this.handleChange('Quantity')}
-                    />
-                    <TextField
-                        id="Supplier"
-                        label="Supplier"
-                        value={this.state.Supplier}
-                        className={classes.textField}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        onChange={this.handleChange('Supplier')}
-                    />
-                    <TextField
-                        id="Category"
-                        label="Category"
-                        value={this.state.Category}
-                        className={classes.textField}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        onChange={this.handleChange('Category')}
-                    />
-                    <TextField
-                        id="MinQuantity"
-                        label="MinQuantity"
-                        value={this.state.MinQuantity}
-                        className={classes.textField}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        onChange={this.handleChange('MinQuantity')}
-                    /><TextField
-                        required
-                        id="Description"
-                        label="Description"
-                        fullWidth
-                        multiline
-                        rows="4"
-                        value={this.state.Description}
-                        className={classes.textField}
-                        margin="normal"
-                        variant="outlined"
-                        onChange={this.handleChange('Description')}
-                    />
-                </form >
-            </Card>
+                        <Grid
+                            item spacing={8}>
+                            <Button
+                                onClick={this.remoteItem}
+                                name='Delete'
+                                color="secondary"
+                                variant="contained" >
+                                Delete
+                        </Button>
+                            {"  "}
+                            <Button
+                                onClick={this.buttonClick}
+                                variant="contained"
+                                color="primary"
+                                name='Update'>
+                                Update
+                        </Button>
+                            {"  "}
+                            <Button
+
+                                component={Link} to="/itemPage"
+                                name='Back'
+                                variant="contained">
+                                Back
+                        </Button>
+
+                        </Grid>
+
+                        <TextField
+                            required
+                            id="PN"
+                            label="Product Number"
+                            value={this.state.PN}
+                            className={classes.textField}
+                            fullWidth
+                            onChange={this.handleChange('PN')}
+                            margin="normal"
+                            variant="outlined"
+
+                        />
+                        <TextField
+                            required
+                            id="Cost"
+                            label="Cost"
+                            value={this.state.Cost}
+                            className={classes.textField}
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.handleChange('Cost')}
+                        />
+                        <TextField
+                            required
+                            id="Quantity"
+                            label="Quantity"
+                            value={this.state.Quantity}
+                            className={classes.textField}
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.handleChange('Quantity')}
+                        />
+                        <TextField
+                            id="Supplier"
+                            label="Supplier"
+                            value={this.state.Supplier}
+                            className={classes.textField}
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.handleChange('Supplier')}
+                        />
+                        <TextField
+                            id="Category"
+                            label="Category"
+                            value={this.state.Category}
+                            className={classes.textField}
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.handleChange('Category')}
+                        />
+                        <TextField
+                            id="MinQuantity"
+                            label="MinQuantity"
+                            value={this.state.MinQuantity}
+                            className={classes.textField}
+                            fullWidth
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.handleChange('MinQuantity')}
+                        /><TextField
+                            required
+                            id="Description"
+                            label="Description"
+                            fullWidth
+                            multiline
+                            rows="4"
+                            value={this.state.Description}
+                            className={classes.textField}
+                            margin="normal"
+                            variant="outlined"
+                            onChange={this.handleChange('Description')}
+                        />
+                    </form >
+                </Card >
+            </div>
         );
     }
 }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -93,7 +92,7 @@ function SearchAppBar(props) {
                     <Typography className={classes.title} variant="title" color="inherit" noWrap>
                         Welcome to Stock and Track
           </Typography>
-                    <Button size="small" color="white" component={Link} to="/">
+                    <Button size="small" component={Link} to="/">
                         <HomeIcon className={classes.icon} />
                     </Button>
                     <div className={classes.grow} />

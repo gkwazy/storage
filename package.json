@@ -7,10 +7,6 @@
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
-<<<<<<< HEAD
-    "startchange": "node server.js",
-=======
->>>>>>> b5ad856517fc84f5fb5aa937056ad35f193f41a8
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
     "client": "cd client && yarn run start",

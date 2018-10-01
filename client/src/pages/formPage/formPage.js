@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import API from '../../utils/API'
 import TextField from '@material-ui/core/TextField';
-import Button from "../../components/Button";
+import Button from "@material-ui/core/Button";
 // import UpLoad from "../../components/upLoad"
 import Card from '@material-ui/core/Card';
-import AppBar from "../../components/AppBar";
 
 
 const styles = theme => ({
@@ -60,7 +58,7 @@ class FilledTextFields extends React.Component {
 
     buttonClick = () => {
         const product = this.state;
-        if (product.PN == '' || product.Cost == '' || product.Name == '' || product.Quantity == "" || product.Description == '') {
+        if (product.PN === '' || product.Cost === '' || product.Name === '' || product.Quantity === "" || product.Description === '') {
             alert("Please fill in reaquired fields mark with * before submiting")
         } else {
             console.log("this is " + product.PN)
@@ -73,7 +71,7 @@ class FilledTextFields extends React.Component {
     };
 
     geoFindMe = () => {
-        var output = document.getElementById("out");
+
 
         if (!navigator.geolocation) {
             // output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -195,11 +193,17 @@ class FilledTextFields extends React.Component {
                     />
                     <Button
                         onClick={this.geoFindMe}
-                        name='Load Location' />
+                        name='Load Location'
+                        variant="contained"
+                        color="primary">
+                        Load Loacation
+                        </Button>
                     <Button
                         onClick={this.buttonClick}
                         name='Submit'
-                    />
+                        variant="contained">
+                        Submit
+                    </Button>
 
                 </form >
             </Card>
