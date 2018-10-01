@@ -13,10 +13,10 @@ const styles = theme => ({
 });
 
 function ContainedButtons(props) {
-    const { classes } = props;
+    // const { classes } = props;
     return (
         <div>
-            <Button variant="contained" color="primary" className={classes.button} {...props}>
+            <Button variant="contained" color="default" className={props.button} {...props}>
                 {props.name}
             </Button>
         </div>

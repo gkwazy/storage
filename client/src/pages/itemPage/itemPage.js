@@ -17,14 +17,11 @@ class ItemPage extends Component {
 
     componentDidMount() {
         this.getProducts()
-
       }
     
     //   getProducts = _ => {  fetch('http://localhost:4001/products')
        getProducts = _ => {  fetch('http://www.stockandtrack.com/products')
        .then(response => response.json())
-    // .then(response => response.text())
-    // .then(text => console.log(text))
        .then(response => this.setState({ products: response.data }))
       .catch(err => console.error(err))
     }
@@ -34,7 +31,6 @@ class ItemPage extends Component {
     }
 
     render() {
-        // console.log(this.state.item[0].productName)
         return (
             <div>
                  <AppBar query = {this.search.bind(this, "IT WORKS")}/>
@@ -44,9 +40,10 @@ class ItemPage extends Component {
                     {this.state.products.map(item =>
                     <Grid item s>
                             <ItemCard
+                                Key = {item.PN}
                                 PN={item.PN}
                                 Name={item.Name}
-                                Cost={item.cost}
+                                Cost={item.Cost}
                                 Quantity={item.Quantity}
                                 Supplier={item.Supplier}
                                 Category={item.Category}

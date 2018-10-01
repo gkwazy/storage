@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import API from '../../utils/API'
+// import API from '../../utils/API'
 import TextField from '@material-ui/core/TextField';
 import Button from "../../components/Button";
 // import UpLoad from "../../components/upLoad"
@@ -45,9 +45,9 @@ class FilledTextFields extends React.Component {
     };
 
     handleChange = name => event => {
-        console.log("name: " + name);
-        console.log("state1: " + JSON.stringify(this.state))
-        console.log("event: " + event.target.value)
+        // console.log("name: " + name);
+        // console.log("state1: " + JSON.stringify(this.state))
+        // console.log("event: " + event.target.value)
         this.setState({
             [name]: event.target.value,
 
@@ -75,7 +75,7 @@ class FilledTextFields extends React.Component {
         fetch(`http://stockandtrack.com/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
         &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
         `)
-        // .then(document.getElementById("PN").reset())
+        .then(window.location.reload())
         .catch(err => console.error(err))
     };
 

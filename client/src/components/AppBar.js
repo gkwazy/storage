@@ -94,7 +94,7 @@ function SearchAppBar(props) {
                     <Typography className={classes.title} variant="title" color="inherit" noWrap>
                         Welcome to Stock and Track
           </Typography>
-                    <Button size="small" color="white" component={Link} to="/">
+                    <Button size="small" component={Link} to="/">
                         <HomeIcon className={classes.icon} />
                     </Button>
                     <div className={classes.grow} />
