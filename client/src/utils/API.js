@@ -4,16 +4,9 @@ import axios from "axios";
 //change the fucntion in src/components/TextFilled line 56 to match where it
 //needs to send. 
 export default {
-    saveItem: function (query) {
-        return console.log("Item was saved" + JSON.stringify(query));
-    },
+    addItem: function (itemData) {
+        // return axios.post('http://localhost:4001/api/post', itemData)
+        return axios.post('http://stockandtrack.com/api/post', itemData)
 
-    addProduct: function (state) {
-        console.log("SHIT WORKS")
-        // const { product } = this.state;
-        console.log(this.state)
-        // fetch(`http://localhost:4000/products/add?PN=${this.state.productNumber}&Cost=${this.state.cost}&Description=${this.state.description}&Quantity=${this.state.quantity}`)
-        // .then(this.getProducts)
-        // .catch(err => console.error(err))
     }
 };
