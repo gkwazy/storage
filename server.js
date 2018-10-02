@@ -13,21 +13,10 @@ if (process.env.NODE_ENV === "production") {
 
 var db = require('./models')
 
-// const connection = mysql.createConnection({
-//     host: 'stockandtrack.cnpaonpk4jsm.us-west-1.rds.amazonaws.com',
-//     user: 'stockAndTrack',
-//     password: 'stockAndTrack2018',
-//     database: 'stockAndTrack'
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// })
+app.use(bodyParser.json());
 
-// connection.connect(err => {
-//     if (err) {
-//         return err;
-//     }
-// })
-
-// console.log(connection)
 
 app.use(cors());
 

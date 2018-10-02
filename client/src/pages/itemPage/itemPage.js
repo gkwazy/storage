@@ -86,17 +86,14 @@ class ItemPage extends React.Component {
 
     componentDidMount() {
         this.getProducts()
-        this.categorySearch()
-
     }
 
     getProducts = _ => {
-        console.log("running mans")
-        fetch('http://localhost:4001/api/posts')
-            //    getProducts = _ => {  fetch('http://www.stockandtrack.com/products')
-            .then(response => response.json())
-            .then(response => this.setState({ item: response }))
-            .catch(err => console.error(err + " you lose"))
+        fetch('http://localhost:4001/api/get')
+        //    getProducts = _ => {  fetch('http://www.stockandtrack.com/products')
+        .then(response => response.json())
+        .then(response => this.setState({ products: response }))
+        .catch(err => console.error(err))
     }
 
     loadSearch = (itemCategory) => {
