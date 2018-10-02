@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-// import API from '../../utils/API'
+import API from '../../utils/API'
 import TextField from '@material-ui/core/TextField';
 import Button from "../../components/Button";
 // import UpLoad from "../../components/upLoad"
@@ -66,17 +66,33 @@ class FilledTextFields extends React.Component {
 
     buttonClick = () => {
   
-        console.log("starting to send items")
-        const product  = this.state;
-        console.log("this is "+product.Quantity)
-        // fetch(`http://localhost:4001/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        // console.log("starting to send items")
+        // const product  = this.state;
+        // console.log("this is "+product.Quantity)
+        // // fetch(`http://localhost:4001/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
+        // // &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
+        // // `)
+        // fetch(`http://stockandtrack.com/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
         // &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
         // `)
-        fetch(`http://stockandtrack.com/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
-        &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
-        `)
-        .then(window.location.reload())
-        .catch(err => console.error(err))
+        // .then(window.location.reload())
+        // .catch(err => console.error(err))
+        // event.preventDefault();
+        // if (this.state.title && this.state.author) {
+          API.addItem({
+            PN: this.state.PN,
+            Cost: this.state.Cost,
+            Description: this.state.Description,
+            Quantity: this.state.Quantity,
+            MinQuantity: this.state.MinQuantity,
+            Supplier: this.state.Supplier,
+            Category: this.state.Category,
+            Name: this.state.Name
+          })
+            .then(console.log("SUCCESS"))
+            .catch(err => console.log(err));
+        // }
+
     };
 
     fileSelectedHandler = event => {
