@@ -61,6 +61,40 @@ module.exports = function(app) {
       .then(function(dbPost) {
         res.json(dbPost);
       });
+  }),
+
+  app.get("/api/category/:category", function(req, res) {
+    db.products.findAll({
+      where: {
+        Category: req.params.category
+      }
+    })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
+  }),
+
+  app.delete("/api/delete/:id", function(req, res) {
+    db.products.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
+  }),
+
+  app.put("/api/put", function(req, res) {
+    db.products.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
   });
 
 };
