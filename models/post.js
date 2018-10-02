@@ -2,35 +2,35 @@ module.exports = function(sequelize, DataTypes) {
     var Post = sequelize.define("products", {
       PN: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       Cost: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-      },
+        allowNull: true,
+            },
       Description: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       Quantity: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       MinQuantity: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       Supplier: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       Category: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       Name: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       }
     });
     return Post;
