@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CategoryCard from "../../components/categoryCard";
-// import item from "../../itemTest.json";
+import item from "../../itemTest.json";
 
 const styles = theme => ({
     container: {
@@ -36,7 +36,7 @@ class ItemPage extends React.Component {
         category: '',
         query: [],
         objCards: '',
-        item: [],
+        item,
         needInstructions: ''
 
     };
@@ -86,14 +86,15 @@ class ItemPage extends React.Component {
 
     componentDidMount() {
         this.getProducts()
+        this.categorySearch()
     }
 
     getProducts = _ => {
         fetch('http://localhost:4001/api/get')
-        //    getProducts = _ => {  fetch('http://www.stockandtrack.com/products')
-        .then(response => response.json())
-        .then(response => this.setState({ products: response }))
-        .catch(err => console.error(err))
+            //    getProducts = _ => {  fetch('http://www.stockandtrack.com/products')
+            .then(response => response.json())
+            .then(response => this.setState({ products: response }))
+            .catch(err => console.error(err))
     }
 
     loadSearch = (itemCategory) => {

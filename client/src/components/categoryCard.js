@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 // import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
+import PrintButton from '../components/printButton'
 
 
 const styles = {
@@ -29,13 +30,13 @@ function MediaCard(props) {
                 onClick={props.loadSearch}>
 
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary" variant="display1"            >
+                    <Typography className={classes.title} color="textSecondary" variant="display2"            >
                         {props.Category}
                     </Typography>
 
                 </CardContent>
             </CardActionArea>
-
+            <PrintButton />
         </Card>
 
 
