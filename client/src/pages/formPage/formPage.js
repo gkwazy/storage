@@ -45,9 +45,6 @@ class FilledTextFields extends React.Component {
     };
 
     handleChange = name => event => {
-        // console.log("name: " + name);
-        // console.log("state1: " + JSON.stringify(this.state))
-        // console.log("event: " + event.target.value)
         this.setState({
             [name]: event.target.value,
 
@@ -56,29 +53,9 @@ class FilledTextFields extends React.Component {
         );
     };
 
-     addProduct = () => {
-        const { product } = this.state;
-        console.log("this is "+product)
-        // fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}`)
-        // // .then(this.getProducts)
-        // .catch(err => console.error(err))
-      }
 
     buttonClick = () => {
   
-        // console.log("starting to send items")
-        // const product  = this.state;
-        // console.log("this is "+product.Quantity)
-        // // fetch(`http://localhost:4001/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
-        // // &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
-        // // `)
-        // fetch(`http://stockandtrack.com/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
-        // &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}
-        // `)
-        // .then(window.location.reload())
-        // .catch(err => console.error(err))
-        // event.preventDefault();
-        // if (this.state.title && this.state.author) {
           API.addItem({
             PN: this.state.PN,
             Cost: this.state.Cost,
@@ -91,7 +68,6 @@ class FilledTextFields extends React.Component {
           })
             .then(console.log("SUCCESS"))
             .catch(err => console.log(err));
-        // }
 
     };
 
