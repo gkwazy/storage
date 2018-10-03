@@ -44,42 +44,45 @@ class ItemPage extends React.Component {
     categorySearch = () => {
 
         if (this.state.category === '') {
-            this.setState({
-                needInstructions: "category",
-                objCards: (
-                    < div >
-                        <Grid container spacing={24}>
-                            <Grid item xs={12}>
-                            </Grid>
-                            <Grid item xs={12}>
-                            </Grid>
-                            <Grid container spacing={16}>
+            API.getCategoryList().then(res =>
+                this.setState({
+                    needInstructions: "category",
+                    products: res,
+                    objCards: (
+                        < div >
+                            <Grid container spacing={24}>
                                 <Grid item xs={12}>
                                 </Grid>
-                                {this.state.item.map(item =>
-                                    <Grid item s>
-                                        <CategoryCard
-                                            PN={item.PN}
-                                            Name={item.Name}
-                                            cost={item.cost}
-                                            Quantity={item.Quantity}
-                                            Supplier={item.Supplier}
-                                            Category={item.Category}
-                                            minQuantity={item.minQuantity}
-                                            lat={item.lat}
-                                            lon={item.lon}
-                                            Description={item.Description}
-                                            loadSearch={this.loadSearch.bind(this, item.Category)}
-
-                                        />
+                                <Grid item xs={12}>
+                                </Grid>
+                                <Grid container spacing={16}>
+                                    <Grid item xs={12}>
                                     </Grid>
-                                )}
+                                    {this.state.products.map(item =>
+                                        <Grid item s>
+                                            <CategoryCard
+                                                PN={item.PN}
+                                                Name={item.Name}
+                                                cost={item.cost}
+                                                Quantity={item.Quantity}
+                                                Supplier={item.Supplier}
+                                                Category={item.Category}
+                                                minQuantity={item.minQuantity}
+                                                lat={item.lat}
+                                                lon={item.lon}
+                                                Description={item.Description}
+                                                loadSearch={this.loadSearch.bind(this, item.Category)}
 
+                                            />
+                                        </Grid>
+                                    )}
+
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </div >
-                )
-            })
+                        </div >
+                    )
+                })
+            )
         }
     }
 
@@ -99,10 +102,11 @@ class ItemPage extends React.Component {
 
     loadSearch = (itemCategory) => {
         console.log(itemCategory)
-        API.GrabItemByCategory(itemCategory).then(
+        API.getItemByCategory(itemCategory).then(res =>
             this.setState({
                 category: itemCategory,
                 needInstructions: "items",
+                products: res,
                 objCards: (
                     < div >
                         <Grid container spacing={24}>
@@ -113,7 +117,7 @@ class ItemPage extends React.Component {
                             <Grid container spacing={16}>
                                 <Grid item xs={12}>
                                 </Grid>
-                                {this.state.item.map(item =>
+                                {this.state.products.map(item =>
                                     <Grid item s>
                                         <ItemCard
                                             PN={item.PN}

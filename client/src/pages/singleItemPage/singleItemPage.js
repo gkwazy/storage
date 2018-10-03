@@ -112,8 +112,17 @@ class outlinedTextFields extends React.Component {
     };
 
     remoteItem = () => {
-        console.log("removed!!!")
+        var ask = window.confirm("Are you sure you want to delete this post?");
+        if (ask) {
+            API.itemDelete(this.state.PN).then(res => {
+                alert("This post was successfully deleted.");
+
+                window.location.href = "/itemPage";
+            })
+        }
+
     }
+
     render() {
 
         const { classes } = this.props;
