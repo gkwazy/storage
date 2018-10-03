@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import API from '../../utils/API'
 
+let itemNumberWanted;
+
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -30,7 +32,7 @@ class outlinedTextFields extends React.Component {
 
 
     state = {
-        PN: JSON.stringify(this.props.location.pathname),
+        PN: itemNumberWanted,
         Name: '',
         Cost: '1',
         Quantity: '1',
@@ -56,7 +58,8 @@ class outlinedTextFields extends React.Component {
     };
 
     componentDidMount() {
-        API.getSingleItem().then(res =>
+        this.getURL()
+        API.getSingleItem(itemNumberWanted).then(res =>
             this.setState({
                 PN: res.PN,
                 Name: res.Name,
@@ -73,9 +76,11 @@ class outlinedTextFields extends React.Component {
     }
 
     getURL = () => {
-        let itemNumberWanted;
-        var res = (this.props.location.pathname).str.split(" ");
-        itemNumberWanted = res[res]
+
+        let res = (this.props.location.pathname).split("/");
+        itemNumberWanted = res[res.length - 1]
+        console.log("number " + itemNumberWanted)
+
 
         // for (i = this.props.location.pathname.length; i < 0; i--) {
         //     if (this.props.location.pathname[i] != "/") {
@@ -85,7 +90,7 @@ class outlinedTextFields extends React.Component {
         //         i = 0;
         //     }
         // };
-        return itemNumberWanted;
+
     }
 
     addProduct = () => {
