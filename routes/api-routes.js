@@ -46,17 +46,12 @@ module.exports = function (app) {
       });
   }),
 
-    app.post("/api/post/", function (req, res) {
-      console.log(req.body);
-      db.products.create({
-        PN: req.body.PN,
-        Cost: req.body.Cost,
-        Description: req.body.Description,
-        Quantity: req.body.Quantity,
-        MinQuantity: req.body.MinQuantity,
-        Supplier: req.body.Supplier,
-        Category: req.body.Category,
-        Name: req.body.Name
+    app.get("/api/category/:category", function (req, res) {
+      console.log(req.params.category)
+      db.products.findAll({
+        where: {
+          Category: req.params.category
+        }
       })
         .then(function (dbPost) {
           res.json(dbPost);
