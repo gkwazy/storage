@@ -6,7 +6,7 @@ import axios from "axios";
 export default {
     addItem: function (itemData) {
         // return axios.post('http://localhost:4001/api/post', itemData)
-        return axios.post('http://stockandtrack.com/api/post', itemData)
+        return axios.post('http://www.stockandtrack.com/api/post', itemData)
 
     }
  };
