@@ -65,7 +65,7 @@ class App extends Component {
                 {firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
                         user.getIdToken().then(function (data) {
-                            console.log(data)
+                            //console.log(data)
                         });
                     }
                 })}

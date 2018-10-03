@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Card from '@material-ui/core/Card';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
+import API from '../../utils/API'
 
 const styles = theme => ({
     container: {
@@ -27,8 +28,9 @@ const styles = theme => ({
 
 class outlinedTextFields extends React.Component {
 
+
     state = {
-        PN: 'qwerty',
+        PN: JSON.stringify(this.props.location.pathname),
         Name: '',
         Cost: '1',
         Quantity: '1',
@@ -53,6 +55,39 @@ class outlinedTextFields extends React.Component {
         );
     };
 
+    componentDidMount() {
+        API.getSingleItem().then(res =>
+            this.setState({
+                PN: res.PN,
+                Name: res.Name,
+                Cost: res.Cost,
+                Quantity: res.Quantity,
+                Supplier: res.Supplier,
+                Category: res.Category,
+                MinQuantity: res.MinQuantity,
+                lat: res.lat,
+                long: res.long,
+                Description: res.Description
+            })
+        )
+    }
+
+    getURL = () => {
+        let itemNumberWanted;
+        var res = (this.props.location.pathname).str.split(" ");
+        itemNumberWanted = res[res]
+
+        // for (i = this.props.location.pathname.length; i < 0; i--) {
+        //     if (this.props.location.pathname[i] != "/") {
+        //         itemNumberWanted.push(this.props.location.pathname[i])
+        //     } else {
+        //         itemNumberWanted = reverse(itemNumberWanted)
+        //         i = 0;
+        //     }
+        // };
+        return itemNumberWanted;
+    }
+
     addProduct = () => {
         const { product } = this.state;
         console.log("this is " + product)
@@ -75,8 +110,9 @@ class outlinedTextFields extends React.Component {
         console.log("removed!!!")
     }
     render() {
-        console.log(JSON.stringify(this.props.classes))
+
         const { classes } = this.props;
+        console.log(JSON.stringify(this.props.location.pathname));
 
         return (
             <div>
