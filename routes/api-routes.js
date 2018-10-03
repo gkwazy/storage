@@ -64,6 +64,7 @@ module.exports = function(app) {
   }),
 
   app.get("/api/category/:category", function(req, res) {
+    console.log(req.params.category)
     db.products.findAll({
       where: {
         Category: req.params.category
