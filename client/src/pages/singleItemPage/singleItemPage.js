@@ -30,8 +30,28 @@ const styles = theme => ({
 
 class outlinedTextFields extends React.Component {
 
+    componentDidMount() {
+        this.getURL()
+        API.getSingleItem(itemNumberWanted).then(res =>
+            this.setState({
+                id: res.data[0].id,
+                PN: res.data[0].PN,
+                Name: res.data[0].Name,
+                Cost: res.data[0].Cost,
+                Quantity: res.data[0].Quantity,
+                Supplier: res.data[0].Supplier,
+                Category: res.data[0].Category,
+                MinQuantity: res.data[0].MinQuantity,
+                lat: res.data[0].lat,
+                long: res.data[0].long,
+                Description: res.data[0].Description
+            })
+
+        )
+    }
 
     state = {
+        id: 0,
         PN: itemNumberWanted,
         Name: '',
         Cost: '1',
@@ -41,9 +61,10 @@ class outlinedTextFields extends React.Component {
         MinQuantity: '',
         lat: '',
         long: '',
-        Description: 'first'
+        Description: ''
 
     };
+
 
     handleChange = name => event => {
         console.log("name: " + name);
@@ -57,23 +78,7 @@ class outlinedTextFields extends React.Component {
         );
     };
 
-    componentDidMount() {
-        this.getURL()
-        API.getSingleItem(itemNumberWanted).then(res =>
-            this.setState({
-                PN: res.PN,
-                Name: res.Name,
-                Cost: res.Cost,
-                Quantity: res.Quantity,
-                Supplier: res.Supplier,
-                Category: res.Category,
-                MinQuantity: res.MinQuantity,
-                lat: res.lat,
-                long: res.long,
-                Description: res.Description
-            })
-        )
-    }
+
 
     getURL = () => {
 
@@ -100,23 +105,30 @@ class outlinedTextFields extends React.Component {
     }
 
     buttonClick = () => {
-        console.log("starting to send items")
+        API.updateItem({
+            id: this.state.id,
+            PN: this.state.PN,
+            Cost: this.state.Cost,
+            Description: this.state.Description,
+            Quantity: this.state.Quantity,
+            MinQuantity: this.state.MinQuantity,
+            Supplier: this.state.Supplier,
+            Category: this.state.Category,
+            Name: this.state.Name,
+            Lat: this.state.Lat,
+            Lon: this.state.Lon
+        })
+            .then(console.log("SUCCESS Updated"))
+            .catch(err => console.log(err));
 
-        const product = this.state;
-        console.log("this is " + product.PN)
-        fetch(`http://localhost:4000/products/add?PN=${product.PN}&Cost=${product.Cost}&Description=${product.Description}&Quantity=${product.Quantity}
-        &MinQuantity=${product.MinQuantity}&Supplier=${product.Supplier}&Category=${product.Category}&Lat=${product.Lat}&Lon=${product.Lon}
-        `)
-            .then(this.getProducts)
-            .catch(err => console.error(err))
     };
 
     remoteItem = () => {
         var ask = window.confirm("Are you sure you want to delete this post?");
         if (ask) {
-            API.itemDelete(this.state.PN).then(res => {
-                alert("This post was successfully deleted.");
+            API.itemDelete(this.state.id).then(res => {
 
+                alert("This post was successfully deleted.");
                 window.location.href = "/itemPage";
             })
         }

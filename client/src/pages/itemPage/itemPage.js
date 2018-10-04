@@ -101,43 +101,46 @@ class ItemPage extends React.Component {
     }
 
     loadSearch = (itemCategory) => {
-        console.log(itemCategory)
-        API.getItemByCategory(itemCategory).then(res =>
-            this.setState({
-                category: itemCategory,
-                needInstructions: "items",
-                products: res,
-                objCards: (
-                    < div >
-                        <Grid container spacing={24}>
-                            <Grid item xs={12}>
-                            </Grid>
-                            <Grid item xs={12}>
-                            </Grid>
-                            <Grid container spacing={16}>
+        console.log(" item cat " + itemCategory)
+        API.getItemByCategory(itemCategory).then(res => {
+            console.log("this is the res " + JSON.stringify(res.data)),
+                this.setState({
+                    category: itemCategory,
+                    needInstructions: "items",
+                    objCards: (
+                        < div >
+                            <Grid container spacing={24}>
                                 <Grid item xs={12}>
                                 </Grid>
-                                {this.state.products.map(item =>
-                                    <Grid item s>
-                                        <ItemCard
-                                            PN={item.PN}
-                                            Name={item.Name}
-                                            cost={item.cost}
-                                            Quantity={item.Quantity}
-                                            Supplier={item.Supplier}
-                                            Category={item.Category}
-                                            minQuantity={item.minQuantity}
-                                            lat={item.lat}
-                                            lon={item.lon}
-                                            Description={item.Description}
-                                        />
+                                <Grid item xs={12}>
+                                </Grid>
+                                <Grid container spacing={16}>
+                                    <Grid item xs={12}>
                                     </Grid>
-                                )}
+                                    {res.data.map(item =>
+                                        <Grid item s>
+                                            {console.log("item.id " + item.id)}
+                                            <ItemCard
+                                                id={item.id}
+                                                PN={item.PN}
+                                                Name={item.Name}
+                                                cost={item.cost}
+                                                Quantity={item.Quantity}
+                                                Supplier={item.Supplier}
+                                                Category={item.Category}
+                                                minQuantity={item.minQuantity}
+                                                lat={item.lat}
+                                                lon={item.lon}
+                                                Description={item.Description}
+                                            />
+                                        </Grid>
+                                    )}
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </div >
-                )
-            }))
+                        </div >
+                    )
+                })
+        })
     }
 
     render() {
