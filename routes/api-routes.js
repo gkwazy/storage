@@ -56,9 +56,7 @@ module.exports = function (app) {
         MinQuantity: req.body.MinQuantity,
         Supplier: req.body.Supplier,
         Category: req.body.Category,
-        Name: req.body.Name,
-        Lat: req.body.Lat,
-        Lon: req.body.Lon
+        Name: req.body.Name
       })
         .then(function (dbPost) {
           res.json(dbPost);
@@ -66,10 +64,9 @@ module.exports = function (app) {
     }),
 
     app.get("/api/category/:category", function (req, res) {
-      console.log(req.params.category)
       db.products.findAll({
         where: {
-          Category: req.params.category
+          PN: req.params.category
         }
       })
         .then(function (dbPost) {

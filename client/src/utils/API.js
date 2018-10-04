@@ -15,5 +15,13 @@ export default {
     getSingleItem: function (itemNumber) {
         let wantedSearch = 'http://www.stockandtrack.com/api/' + itemNumber;
         return axios.get(wantedSearch, itemNumber)
+    },
+    getCategoryList: function () {
+        let wantedSearch = ('http://www.stockandtrack.com/api/get')
+        return axios.get(wantedSearch)
+    },
+    itemDelete: function (itemNumber) {
+        let wantedSearch = ('http://www.stockandtrack.com/api/delete/' + itemNumber)
+        return axios.delete(wantedSearch);
     }
 };
