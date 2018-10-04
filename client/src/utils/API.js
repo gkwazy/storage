@@ -6,14 +6,14 @@ import axios from "axios";
 export default {
     addItem: function (itemData) {
         // return axios.post('http://localhost:4001/api/post', itemData)
-        return axios.post('http://stockandtrack.com/api/post', itemData)
+        return axios.post('http://www.stockandtrack.com/api/post', itemData)
     },
     getItemByCategory: function (category) {
-        let wantedSearch = 'http://stockandtrack.com/api/category/' + category;
+        let wantedSearch = 'http://www.stockandtrack.com/api/category/' + category;
         return axios.get(wantedSearch, category)
     },
     getSingleItem: function (itemNumber) {
-        let wantedSearch = 'http://stockandtrack.com/api/' + itemNumber;
+        let wantedSearch = 'http://www.stockandtrack.com/api/' + itemNumber;
         return axios.get(wantedSearch, itemNumber)
     }
 };

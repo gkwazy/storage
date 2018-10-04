@@ -37,8 +37,8 @@ class FilledTextFields extends React.Component {
         Supplier: '',
         Category: '',
         MinQuantity: '',
-        lat: '',
-        long: '',
+        Lat: '',
+        Lon: '',
         Description: 'first'
 
     };
@@ -63,7 +63,9 @@ class FilledTextFields extends React.Component {
             MinQuantity: this.state.MinQuantity,
             Supplier: this.state.Supplier,
             Category: this.state.Category,
-            Name: this.state.Name
+            Name: this.state.Name,
+            Lat: this.state.Lat,
+            Lon: this.state.Lon
         })
             .then(console.log("SUCCESS"))
             .catch(err => console.log(err));
@@ -83,8 +85,8 @@ class FilledTextFields extends React.Component {
             var longitude = position.coords.longitude;
             console.log("Latitude is " + latitude + "Longitude is " + longitude)
             this.setState({
-                lat: latitude,
-                long: longitude
+                Lat: latitude,
+                Lon: longitude
             })
         }
 
