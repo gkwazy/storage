@@ -84,11 +84,11 @@ const styles = {
 function MediaCard(props) {
     // console.log(props);
     const { classes } = props;
-    let PN = "/singleItemPage/" + props.PN;
+    let PN = "/singleItemPage/" + props.id;
     return (
         <Card className={classes.card}>
             <CardActionArea component={Link} to={PN}>
-
+                {console.log("card id " + props)}
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" variant="display3"            >
                         {props.Name}
@@ -97,7 +97,7 @@ function MediaCard(props) {
                         {props.Number}
                     </Typography>
                     <Typography component="p">
-                        ID: {props.product_id}
+                        ID: {props.id}
                     </Typography>
                     <Typography component="p">
                         Description: {props.Description}

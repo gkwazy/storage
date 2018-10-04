@@ -13,7 +13,7 @@ export default {
         return axios.get(wantedSearch, category)
     },
     getSingleItem: function (itemNumber) {
-        let wantedSearch = 'http://www.stockandtrack.com/api/' + itemNumber;
+        let wantedSearch = 'http://www.stockandtrack.com/api/singleQuery/' + itemNumber;
         return axios.get(wantedSearch, itemNumber)
     },
     getCategoryList: function () {
@@ -23,5 +23,10 @@ export default {
     itemDelete: function (itemNumber) {
         let wantedSearch = ('http://www.stockandtrack.com/api/delete/' + itemNumber)
         return axios.delete(wantedSearch);
+    },
+    updateItem: function (itemNumber) {
+        let wantedSearch = "http://www.stockandtrack.com/api/put"
+        console.log("wantedSearch " + JSON.stringify(itemNumber))
+        return axios.put(wantedSearch, itemNumber)
     }
 };
